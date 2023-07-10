@@ -12,16 +12,18 @@ const Content = ({
 }) => {
   return (
     <>
-      <p>
-        {partName1} {exercisesCount1}
-      </p>
-      <p>
-        {partName2} {exercisesCount2}
-      </p>
-      <p>
-        {partName3} {exercisesCount3}
-      </p>
+      <Part partName={partName1} exercisesCount={exercisesCount1} />
+      <Part partName={partName2} exercisesCount={exercisesCount2} />
+      <Part partName={partName3} exercisesCount={exercisesCount3} />
     </>
+  );
+};
+
+const Part = ({ partName, exercisesCount }) => {
+  return (
+    <p>
+      {partName} {exercisesCount}
+    </p>
   );
 };
 
