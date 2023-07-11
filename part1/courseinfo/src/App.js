@@ -2,27 +2,20 @@ const Header = ({ courseName }) => {
   return <h1>{courseName}</h1>;
 };
 
-const Content = ({
-  partName1,
-  partName2,
-  partName3,
-  exercisesCount1,
-  exercisesCount2,
-  exercisesCount3,
-}) => {
+const Content = ({ part1, part2, part3 }) => {
   return (
     <>
-      <Part partName={partName1} exercisesCount={exercisesCount1} />
-      <Part partName={partName2} exercisesCount={exercisesCount2} />
-      <Part partName={partName3} exercisesCount={exercisesCount3} />
+      <Part {...part1} />
+      <Part {...part2} />
+      <Part {...part3} />
     </>
   );
 };
 
-const Part = ({ partName, exercisesCount }) => {
+const Part = ({ name, exercises }) => {
   return (
     <p>
-      {partName} {exercisesCount}
+      {name} {exercises}
     </p>
   );
 };
@@ -37,28 +30,27 @@ const Total = ({ exercisesCount1, exercisesCount2, exercisesCount3 }) => {
 
 const App = () => {
   const course = "Half Stack application development";
-  const part1 = "Fundamentals of React";
-  const exercises1 = 10;
-  const part2 = "Using props to pass data";
-  const exercises2 = 7;
-  const part3 = "State of a component";
-  const exercises3 = 14;
+  const part1 = {
+    name: "Fundamentals of React",
+    exercises: 10,
+  };
+  const part2 = {
+    name: "Using props to pass data",
+    exercises: 7,
+  };
+  const part3 = {
+    name: "State of a component",
+    exercises: 14,
+  };
 
   return (
     <div>
       <Header courseName={course} />
-      <Content
-        partName1={part1}
-        exercisesCount1={exercises1}
-        partName2={part2}
-        exercisesCount2={exercises2}
-        partName3={part3}
-        exercisesCount3={exercises3}
-      />
+      <Content part1={part1} part2={part2} part3={part3} />
       <Total
-        exercisesCount1={exercises1}
-        exercisesCount2={exercises2}
-        exercisesCount3={exercises3}
+        exercisesCount1={part1.exercises}
+        exercisesCount2={part2.exercises}
+        exercisesCount3={part3.exercises}
       />
     </div>
   );
