@@ -4,11 +4,11 @@ const Button = ({ label, handleClick }) => (
   <button onClick={handleClick}>{label}</button>
 );
 
-const StatisticLine = ({ text, value }) => (
-  <>
-    {text} {value}
-    <br />
-  </>
+const Statistic = ({ text, value }) => (
+  <tr>
+    <th style={{ textAlign: "left", fontWeight: "normal" }}>{text}</th>
+    <td>{value}</td>
+  </tr>
 );
 
 const Statistics = (props) => {
@@ -22,14 +22,16 @@ const Statistics = (props) => {
   const positive = (props.good / all) * 100;
 
   return (
-    <p>
-      <StatisticLine text="good" value={props.good} />
-      <StatisticLine text="neutral" value={props.neutral} />
-      <StatisticLine text="bad" value={props.bad} />
-      <StatisticLine text="all" value={all} />
-      <StatisticLine text="average" value={average} />
-      <StatisticLine text="positive" value={positive + " %"} />
-    </p>
+    <table>
+      <tbody>
+        <Statistic text="good" value={props.good} />
+        <Statistic text="neutral" value={props.neutral} />
+        <Statistic text="bad" value={props.bad} />
+        <Statistic text="all" value={all} />
+        <Statistic text="average" value={average.toFixed(2)} />
+        <Statistic text="positive" value={positive.toFixed(2) + " %"} />
+      </tbody>
+    </table>
   );
 };
 
